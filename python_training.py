@@ -28,3 +28,7 @@ print(type(cookies))
 0.2+0.5
 0.2/0.3
 
+#### Chapter 4 ####
+4==2*2
+name = "Annyce"
+name== "Frank"
