@@ -115,3 +115,12 @@ def favourite_city(name):
 favourite_city("Melbourne")
 favourite_city("Canberra")
 favourite_city("New York")
+
+### Example of strip ##
+txt = "    Ferrari   " ## Variable ##
+x = txt.strip() ## variable to strip above
+print("I am a buying a", txt, "tomorrow.") ## Example of no strip ##
+print("I am a buying a", x, "tomorrow.") ## Example of strip ##
+
+craig = "zzz   Craig zzz" ## Variable that needs strip ##
+print(craig.strip(" z")) ## Example of strip with character that needs to be stripped ##
