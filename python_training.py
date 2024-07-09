@@ -45,7 +45,68 @@ else:
     print("Everyone knows that")
 
 answer = input("Hi, What is your favourite food?")
-food = "pizza"
-if answer == print(food):
+if answer == "pizza":
     print("Yep! So amazing!")
 else: print("Yuck! That's not it!")
+print("Thanks for Playing!")
+### Chapter 5 ###
+print("~~ The Shimmy ~~")
+
+print("Take one step to the right and stomp")
+print("Take one step to the left and stamp")
+print("Shake those hips")
+
+print("Take one step to the right and stomp")
+print("Take one step to the left and stamp")
+print("Shake those hips")
+
+print("Take one step to the right and stomp")
+print("Take one step to the left and stamp")
+print("Shake those hips")
+
+def shimmy():
+    print("Take one step to the right and stomp")
+    print("Take one step to the left and stomp")
+    print("Shake those hips")
+
+shimmy()
+shimmy()
+
+## Parameters which change the function ##
+def car_wash(amount_paid):
+    if(amount_paid==12):
+        print("Wash with tri-colour foam")
+        print("Rinse twice")
+        print("Dry with large blow dryer")
+    if(amount_paid==6):
+        print("Wash with white foam")
+        print("Rinse once")
+        print("Air dry")
+
+car_wash(6)   
+car_wash(12)
+## Returning values from functions ##
+def withdraw_money(current_balance, amount) :
+    if(current_balance >= amount):
+        current_balance = current_balance - amount
+        return current_balance
+
+balance = withdraw_money(100,80)
+
+if (balance <= 50):
+    print("We need to make a deposit")
+else:
+    print("Nothing to see here")
+
+### Favourite city challange ###
+# Function called favourite_city #
+# favourite_city should have one parameter: name #
+# you should call favourite_city at least three times #
+# The output should include : "One of my favourite cities is"#
+
+def favourite_city(name):
+    print("One of my favourite cities is", name)
+
+favourite_city("Melbourne")
+favourite_city("Canberra")
+favourite_city("New York")
