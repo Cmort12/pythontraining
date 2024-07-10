@@ -162,3 +162,131 @@ print(result1) ## print result ##
 x, y = 1000, 100 ## assign new values for x and y ##
 result2 = "x is less than y" if x < y else "x is greater to or equal to y" ## denote result for x is less than y and other ##
 print(result2) ## print result ##
+
+## Match Case Statements (compare multiple values) ##
+value = "one" ## value that will be matched ##
+match value: ## create match and denote which value ##
+     case "one": ## match this value ##
+          result = 1 ## result if matched ##
+     case "two": ## match this value ##
+          result = 2 ## result if matched ##
+     case "three" | "four": ## match either of these values ##
+          result =(3,4) ## result if either of above matched ##
+     case _: ## If no match ##
+          result = -1 ## result if no match ##
+print(result) ## result = 1 ##
+
+value = "three" ## value that will be matched ##
+match value: ## create match and denote which value ##
+     case "one":  ## match this value ##
+          result = 1 ## result if matched ##
+     case "two":  ## match this value ##
+          result = 2 ## result if matched ##
+     case "three" | "four": ## match either of these values ##
+          result =(3,4) ## result if either of above matched ##
+     case _: ## If no match ##
+          result = -1 ## result if no match ##
+print(result) ## result = (3,4) ##
+
+value = "42" ## value that will be matched ##
+match value: ## create match and denote which value ##
+     case "one": ## match this value ##
+          result = 1 ## result if matched ##
+     case "two": ## match this value ##
+          result = 2 ## result if matched ##
+     case "three" | "four": ## match either of these values ##
+          result =(3,4) ## result if either of above matched ##
+     case _: ## If no match ##
+          result = -1 ## result if no match ##
+print(result) ## result = -1 ##
+
+## Loops ##
+
+## A while Loop ##
+def whilefunc(): ## Create new function ##
+     x = 0 ## value of x is 0 ##
+     while(x < 5): ## perform this loop while x is still less than 5 ##
+          print(x) ## print the value of x ##
+          x = x + 1 ## print all the values of x from the original definition to the max it is still less than 5 ##
+whilefunc() ## Run the created function.
+
+## A for Loop with a range of numbers ##
+def forfunc(): ## create function ##
+     for x in range(5,10): ## define the range ##
+        print(x) ## print the defined range ##
+forfunc() ## run the function ##
+
+## A for loop over a collection ##
+days = ["Mon", "Tues" , "Wed", "Thu", "Fri" , "Sat" , "Sun"] ## create the string collection ##
+for d in days: ## define d as all values in collection ##
+     print(d) ## print d being the collection ##
+
+## Range() example ##
+x = range(1,10,2) ## define the range ##
+for n in x: ## set all values of n as the values of the range ##
+     print(n) ## print n which is all values of the range
+
+# Break Statement #
+for x in range(5,10): # define x as range(5,10)
+     if x == 7: # Set condition where x = 7 #
+          break # break the loop when the above condition is met #
+     print(x) # print values of x they meet above condition which will be 5,6 #
+
+## Continue Statement ##
+for x in range(5,10): # define x as range(5,10)
+     if x % 2 == 0: #Set condition when divided by 2 there are no remainders (even number)##
+          continue # skip the loop when the condition is met #
+     print(x) ## Print the loop ##
+
+## Using the enumerate( ) function to get an index ##
+days = ["Mon" , "Tues" , "Wed" , "Thurs" , "Fri" , "Sat", "Sun"] # Create Variable #
+for i,d in enumerate(days): ## enumerate retuns item and the index of the item in question
+     print(i,d) # print both the item and the index ##
+
+## Creating Classes ##
+class vehicle(): ## create the bass class vehicle ##
+     def __init__(self, body_style): ## details the parameters that will need to be passed in for the class vehicle()##
+         #self is always passed in the init() method. It represents the object of the class itself #
+         self.body_style = body_style ## denotes that the variable is unique to each instance and is passed in through a parameter ##
+
+     def drive(self,speed): ## new function called drive passed into the class vehicle ()  and defines the parameters that will need to be passed in##
+          self.mode = "driving" # a defined property for the drive function shared by all instances
+          self.speed = speed # this property is passed in through a parameter and is unique for each instance
+
+class car(vehicle): ## creates a sub class for vehicle()
+     def __init__(self,engine_type): # defines the parameters that need to passed in for the function car(). #
+          super().__init__("Car") # defines the body_style parameter for car() and init is required to add parameters for car()
+          self.wheels = 4 # creates a defined property for wheels for all cars #
+          self.doors = 4 # creates a defined property for door for all cars #
+          self.engine_type = engine_type # this property is passed in through a parameter and is unique for each instance #
+
+     def drive(self,speed): # defines the function for the drive class #
+          super().drive(speed) # defines the class the function is dependent on and the parameter that needs to be passed in #
+          print("Driving my", self.engine_type, "car at", self.speed) # print the following result based on the parameter in the class and function
+
+class motorcycle(vehicle): ## creates a subclass for vehicle() called motorcycle()
+     def __init__(self,engine_type, has_side_car): # defines the parameters for the motorcycle() class 
+          super().__init__("Motorcycle") # defines the body_style parameter for motorcycle() and init is required to add parameters for motorcycle()
+          if (has_side_car): # defines the condition if true
+               self.wheels = 3 #result if true
+          else:
+               self.wheels = 2 #result if false #
+          self.doors = 0 # defined parameter for all motorcycle() results
+          self.engine_type = engine_type # property that requires a parameter to be passed through
+     
+     def drive(self,speed): # defines the function for the drive class #
+          super().drive(speed) # defines the class the function is dependent on and the parameter that needs to be passed in #
+          print("Driving my", self.engine_type, "motorcycle at", self.speed) # print the following result based on the parameter in the class and function
+
+car1 = car("gas") # car1 has a engine_type gas
+car2 = car("electric") # car2 has a engine_type electric
+mc1 = motorcycle("gas", True) #mc1 has a gas engine type and a sidecar
+
+print(mc1.wheels) # displays 3 as it has a side car
+print(car1.engine_type) #prints gas as it is defined above
+print(car2.doors) #prints 4 as all cars have 4 doors
+print(car1.body_style) # prints Car as all car have a body_style Car
+
+car1.drive(30) #Prints "driving my gas car at 30" as a result of drive() class and value defined for car1 and parameter passed through
+car2.drive(40) #Prints "driving my electric car at 40" as a result of drive() class and value defined for car2 and parameter passed through
+mc1.drive(50) #Prints "driving my gas motorcycle at 50" as a result of drive() class and value defined for mc1 and parameter passed through
