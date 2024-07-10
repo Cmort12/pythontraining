@@ -41,3 +41,45 @@ print(mydict["one"])
 
 ## Combining variables of different types ##
 print("string type " + str(123))
+
+#Global vs Local Variables#
+mystr = "This is a string"  ## Global Variable ##
+
+def someFunction():  # Creating new Function #
+     mystr = "def" # Creating new local variable #
+     print(mystr) # print local variable #
+
+someFunction() # prints local variable #
+print(mystr) # prints global variable #
+
+def someFunction():  # Creating new Function #
+     global mystr ## denotes change global variable #
+     mystr = "def" # Creating new global variable #
+     print(mystr) # print global variable #
+
+someFunction() ## print the new global variable ##
+print(mystr) ## prints the same variable ##
+
+### Comments in code ##
+
+## 1. Example of a single line comment ##
+# Example of a single line comment #
+
+## 2.Example of a multi-line comment ##
+# Example of a #
+# multi #
+# line # 
+# comment #
+
+## 3. Example of a multi-line comment
+"""
+Example of a 
+multi-line
+comment
+"""
+
+## Deleting Variables ##
+Craig = "Craig" ## New Variable ##
+del Craig ## Delete Variable ##
+print(Craig) ## Variable will not print as it is deleted ##
+
