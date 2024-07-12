@@ -290,3 +290,65 @@ print(car1.body_style) # prints Car as all car have a body_style Car
 car1.drive(30) #Prints "driving my gas car at 30" as a result of drive() class and value defined for car1 and parameter passed through
 car2.drive(40) #Prints "driving my electric car at 40" as a result of drive() class and value defined for car2 and parameter passed through
 mc1.drive(50) #Prints "driving my gas motorcycle at 50" as a result of drive() class and value defined for mc1 and parameter passed through
+
+
+## Importing and using modules ##
+import math ### import of the math module ##
+print("The square root of 16 is", math.sqrt(16))## math.sqrt produces the square root of a value ##
+print(math.pi) ## produces the pi value ##
+print(math.ceil(27.4)) #rounds numbers up to the nearest integer being 28 in this case ##
+print(math.floor(27.6)) #rounds number down to the nearest integer being 27 in this case #
+print(math.log(100)) # produces the natural logarithim of the number being 4.605 in this case##
+
+
+# Exception Handling #
+
+# Traditional code with error that will error ##
+x = 10/0 # write a code to produce an error #
+
+## Code that tells you how to better present error ##
+try: ## condition = no error##
+     x= 10/0  #result if there is no error
+except: ## condition = error  ##
+     print("Well that didn't work") ## result if there is error
+
+## code that handles communicates the type of errors ##
+try: ## condition =  no error ##
+     answer = input("What should i divide by 10 by?") ## answer is the input to this question #
+     num = int(answer) # the number trys to convert the answer to a integer
+     print(10/num) # if no error print 10/num
+except ZeroDivisionError as e: # condition = divide by zero error
+     print("You can't divide by 0") # print if above condition met
+except ValueError as e: # condition = cannot be converted to integer
+     print("You didn't give me a valid number") # print if above condition met
+     print(e) # detail error if condition (cannot be converted to integer met)
+finally: ## print all the time
+     print("This code always runs") # print all the time
+
+### Palindrome test ###
+## Palindromes are words that when punctuation and capitalisation is removed they have the same letters ## 
+
+test_words = ["Hellow World!", "Radar", "Mama?", "Madam i'm adam", "Race Car!"]
+total = 3
+
+def is_palindrome(teststr):
+     # convert the string to all lowercase #
+     temp = teststr.lower()
+     ## strip all the spaces and punctuation from the string ##
+     newstr = ""
+     for c in temp:
+          if c.isalnum():
+               newstr += c ##add to string ##
+     ## now calculate the reverse of the string ##
+     reversestr = ""
+     strindx = len(newstr) - 1
+     while (strindx >= 0):
+           reversestr += newstr[strindx]
+           strindx -= 1
+     
+     if newstr == reversestr:
+          return True
+     return False
+
+for word in test_words:
+     is_palindrome(word)
