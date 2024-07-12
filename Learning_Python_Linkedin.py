@@ -352,3 +352,28 @@ def is_palindrome(teststr):
 
 for word in test_words:
      is_palindrome(word)
+
+
+## Working with files ##
+def main(): ## create new function ##
+     ## for file called textfile.txt have write permission and open if not created ## 
+     myfile = open("textfile.txt","w+")
+     for i in range(10): ## write this many lines of data in the file
+          myfile.write("This is some text\n") ## write this line
+     myfile.close() ##close the file when done
+main()  ## run the function
+
+def main2(): ## create new function ##
+     myfile = open("textfile.txt" , "a+") ## append the file (add to the end)  ##
+     for i in range(10): ## write this mny lines of data in the file
+          myfile.write("This is some new text\n") ## write this text in the file
+     myfile.close() ## close the file
+
+main2()
+
+def main3(): ## create new function
+     myfile = open("textfile.txt", "r")  ## open with read permissions only
+     if myfile.mode == 'r': ## if open with correct permissions
+          contents = myfile.read() ## read the file
+          print(contents) ## print out the relevant lines
+main3()
