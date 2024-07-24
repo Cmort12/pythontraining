@@ -377,3 +377,93 @@ def main3(): ## create new function
           contents = myfile.read() ## read the file
           print(contents) ## print out the relevant lines
 main3()
+
+def main4(): ## create new function ##
+     myfile = open("textfile.txt", "r") ## open with read permissions only
+     if myfile.mode == "r": # if open with the correct permssions 
+          fl = myfile.readlines() ## returns each line of the file 
+          for x in fl: ## loop for each line in the new file
+               print(x) ## print each line
+
+main4()
+
+### Finding information about a file ##
+import os
+from os import path
+import datetime 
+from datetime import date, time, timedelta
+import time
+
+# Print the name of the OS (Operating System)
+def os_function(): ## create new function ##
+     print(os.name) ## call module os and name to reference operating system name
+
+os_function() ## run the function
+
+## Check for item existence and type ##
+def item_exists(): ## Create new function ##
+     print("Item exists:", str(path.exists("textfile.txt"))) ## check if item exists
+     print("Item is a file:", path.isfile("textfile.txt")) ## check if item is a file 
+     print("Item is a directory:", path.isdir("textfile.txt")) ## check if item is a directory (it is not) ##
+
+item_exists()
+
+ ## Generate the item path ##
+def item_path():
+     print("Item's path:", path.realpath("textfile.txt")) ## the path of the file
+     print("Item's path and name:", path.split(path.realpath("textfile.txt"))) ## the path and name of the file
+
+item_path()
+
+## Generating the modification times
+def mod_time():
+     t = time.ctime(path.getmtime("textfile.txt")) # get the modification time
+     print(t) ## print the modification time
+     print(datetime.datetime.fromtimestamp(path.getmtime("textfile.txt"))) # print a more readable modification time
+
+mod_time()
+
+## how long ago was the files modified
+def mod_time2():
+     td = datetime.datetime.now() - datetime.datetime.fromtimestamp(path.getmtime("textfile.txt"))
+     ## current time - last modified time
+     print("It has been", td, "since the file was modified") ## time in dd:hh:mm:ss format
+     print("Or," , td.total_seconds(), "seconds") ## time in seconds 
+
+mod_time2() # run created function
+
+## Manipulate the filesystem shell methods using the operating system's shell utilities ##
+import os
+from os import path
+import shutil
+from shutil import make_archive
+from zipfile import ZipFile
+
+def main_12(): # create new function to make a duplicate of the file
+     if path.exists("textfile.txt"): ## if the file exists
+          src = path.realpath("textfile.txt") ## get the real path in the directory ##
+          dst = src + ".bak" # adds parameter of name of file + bak to denote that it is a backup
+          shutil.copy(src, dst) ## this creates the copy
+
+main_12() ## run the function ##
+
+def renamefile(): ## create new function to rename the file ##
+     if path.exists("textfile.txt"): # if the file exist 
+          os.rename("textfile.txt", "newfile.txt") # rename the file
+
+renamefile() ## run the function
+
+def store_in_zip(): ## create new function
+     if path.exists("newfile.txt"): ## if file exist
+          src = path.realpath("newfile.txt")
+          root_dir, tail = path.split(src) ## assigns the two values of the split the crucial one here being the directory value
+          shutil.make_archive("archive", "zip", root_dir) ## function is make archive as a zip usinng the directory from the file
+
+store_in_zip()
+
+def control_in_zip() : ## create new function
+     with ZipFile("testzip.zip","w") as newzip: ## create testxip.zip and give write access and then create variable as newzip
+          newzip.write("newfile.txt") ## add this file to the zip
+          newzip.write("textfile.txt.bak") ## add this file to the zip
+
+control_in_zip() ## run the function
