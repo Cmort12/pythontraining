@@ -1,4 +1,3 @@
-git config
 ## Chapter 2 Python Basics ##
 ## 2.1 Functions ##
 ## Build Function ##
