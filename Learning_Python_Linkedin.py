@@ -1,3 +1,4 @@
+git config
 ## Chapter 2 Python Basics ##
 ## 2.1 Functions ##
 ## Build Function ##
@@ -462,8 +463,58 @@ def store_in_zip(): ## create new function
 store_in_zip()
 
 def control_in_zip() : ## create new function
-     with ZipFile("testzip.zip","w") as newzip: ## create testxip.zip and give write access and then create variable as newzip
+     with ZipFile("testzip.zip","w") as newzip: ## create testzip.zip and give write access and then create variable as newzip
           newzip.write("newfile.txt") ## add this file to the zip
           newzip.write("textfile.txt.bak") ## add this file to the zip
 
 control_in_zip() ## run the function
+
+### Finding the size of a type of file in a directory ##
+def file_info():
+     total_bytes = 0 ## parameter total_bytes is reset to 0
+     folder = "deps" ## parameter folder is set as deps
+     dirlist  = os.listdir(folder) ## pull the list of files in the folder ##
+     for entry in dirlist: ## for every file in the directory ##
+          if os.path.isfile(folder + "/" + entry) and entry.endswith(".txt"): ## for every file in the directory that ends in txt and is a text file ##
+               filesize = os.path.getsize(folder+ "/" + entry) ## find the size of all files in deps that are a text file ##
+               total_bytes += filesize ## add all the filesizes calculated
+     return total_bytes
+
+file_info()
+
+### Date, Time and Datetime classes ###
+import datetime
+from datetime import date, time, datetime
+
+def today_date(): ## create a new function ##
+     today = date.today() ## make parameter today equal today's date
+     print("Today's date is ", today) ## print "Today's date is" with previously created parameter
+
+today_date() ## run function
+
+def today_information(): # create new function #
+     today = date.today() # create parameter today with today's date #
+     print("Date Components = Date:", today.day, "Month:" , today.month, "Year:", today.year) 
+     # pull out the year, day and month of the date and print them ##
+
+today_information()
+
+def today_weekday(): ## create new function
+     today = date.today() # create a parameter called today with information on the current date
+     print("Today's weekday number is", today.weekday()) 
+     ## Produces a number relevant to the weekday of today 0 =  Monday and 6 = Sunday ##
+     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] 
+     ## parameter of days of week in the relevant order of the weekday number ##
+     print("Which is a", days[today.weekday()]) ##produce the weekday by searching the parameter with number of the day
+today_weekday() 
+
+def today_now(): #create new function
+     today = datetime.now() ## create parameter as current date and time
+     print("The current date and time is", today) 
+     ## print "The current date and time is" and the parameter previously created
+today_now()
+
+def time_now(): #create new function
+     t = datetime.time(datetime.now()) ## factor of the time component of the current date and time
+     print("The current time is",t) ## Prints "The urrent time" and the factor created above]
+time_now()
