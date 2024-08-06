@@ -485,19 +485,20 @@ file_info()
 import datetime
 from datetime import date, time, datetime
 
+## Printing today's date ##
 def today_date(): ## create a new function ##
      today = date.today() ## make parameter today equal today's date
      print("Today's date is ", today) ## print "Today's date is" with previously created parameter
-
 today_date() ## run function
 
+## Printing all charactersitics of the date ##
 def today_information(): # create new function #
      today = date.today() # create parameter today with today's date #
      print("Date Components = Date:", today.day, "Month:" , today.month, "Year:", today.year) 
      # pull out the year, day and month of the date and print them ##
-
 today_information()
 
+## Printing the day of the week of today ##
 def today_weekday(): ## create new function
      today = date.today() # create a parameter called today with information on the current date
      print("Today's weekday number is", today.weekday()) 
@@ -507,13 +508,84 @@ def today_weekday(): ## create new function
      print("Which is a", days[today.weekday()]) ##produce the weekday by searching the parameter with number of the day
 today_weekday() 
 
+## Printing the current date and time ##
 def today_now(): #create new function
      today = datetime.now() ## create parameter as current date and time
      print("The current date and time is", today) 
      ## print "The current date and time is" and the parameter previously created
 today_now()
 
+## Printing the current time ##
 def time_now(): #create new function
      t = datetime.time(datetime.now()) ## factor of the time component of the current date and time
      print("The current time is",t) ## Prints "The urrent time" and the factor created above]
 time_now()
+
+## Formatting Time with predefined strings ##
+from datetime import datetime
+
+## Using references to characteristics of time ##
+def date_formatting():   ## create new function
+     now = datetime.now() ## create current time as new factor
+     ## The references are %y (Year), %a (weekday), %b (month), %d (day of month)
+     ## lower case are abbreviated version, upper case are full versions
+     print(now.strftime("The current year is : %Y")) ## Print the current year. %y is reference for year
+     print(now.strftime("The current weekday is : %A")) ## Print the current weekday. %a is reference for year
+     print(now.strftime("The current month is : %B")) ## Print the current month. %b is reference for year
+     print(now.strftime("The current day of the month is : %D")) ## Print the current day of the month. %d is reference for year
+date_formatting()
+
+## Referencing different locale in time ##
+def referencing_locale(): ## create new function
+     now = datetime.now() ## create current time as new factor
+     print(now.strftime("Locale date and time: %c")) ## Prints the locale date and time in the locale format
+     print(now.strftime("Locale time: %X")) ## Prints the locale time in the locale format
+     print(now.strftime("Locale date: %x")) ## Prints the locale date in the locale format
+referencing_locale()
+
+## Print formatted Time options
+def time_formatting(): ## create new function
+     now = datetime.now() ## create current time as new factor
+     ## References for time %I 12 hr time, %H 24 hr time, %M minute, %S second, %p locale AM/PM
+     print(now.strftime("Current time: %I:%M:%S %p")) ## Current time in 12 hr clock
+     print(now.strftime("24-hr time: %H:%M")) ## Current time in 24 hr clock
+time_formatting()
+
+
+### Mathematical Operations with Date and Time Values ###
+from datetime import date
+from datetime import time
+from datetime import datetime
+from datetime import timedelta
+
+## Construct a basic timedelta ##
+def basic_time_delta(): ## create new function
+     ## timedeltas are essentially amounts of time ##
+     print(timedelta(days=365, hours=5, minutes=1))  ##this creating a 365 day, 5 hours and 1 minute as a amount of time
+     now = datetime.now() ## create today as a parameter
+     print("Today's date is", now) ## confirm that today is a parameter
+     print("One year from now it will be", str(now + timedelta(days=365))) ## Print the result of today + 365 days
+basic_time_delta()
+
+def time_delta_with_arguments(): ## create new function
+     now= datetime.now() ## create today as parameter
+     print("In two weeks and 3 days it will be", str(now + timedelta(weeks=2, days=3))) # Print the result of today + 2 weeks and 3 days
+time_delta_with_arguments()
+
+def date_one_week_ago(): # create new function
+     weekago = datetime.now()  - timedelta(weeks=1) # create today minus a week as parameter
+     weekagof = weekago.strftime( "%A %d/%M/%Y") # change the format of the result (optional)
+     print("A week ago it was", weekagof) # Print the result of today minus a week
+date_one_week_ago()
+
+def aprils_fools_distance():## create new function to find how many days to April fools day
+      today = date.today() ## create current time as new factor
+      afd = date(today.year, 4 , 1) ## formula  for April fools day
+      if afd < today: ## if this year's april fools day has occured it is no longer relevant for distance to next
+           print("April fool's day happened", (today-afd).days, " days ago") ## Finds when the last one occured
+           afd_nextyr = date(today.year + 1, 4 ,1) # create new factor for april fools day next year
+           print("The next one is in", (afd_nextyr - today).days, "days") ## print how far away next year's is
+      else: 
+           print("The next April fool's day is in", (afd-today).days, "days") ## print how far away next april fools day is
+aprils_fools_distance()
+
